@@ -13,7 +13,6 @@ namespace HelloMvc
             _client = client;
         }
 
-        [HttpGet("/")]
         public async Task<IActionResult> Index()
         {
             var request = new RepositoryIssueRequest();
@@ -23,5 +22,7 @@ namespace HelloMvc
 
             return View(issues);
         }
+
+        public IActionResult Error() => View();
     }
 }
