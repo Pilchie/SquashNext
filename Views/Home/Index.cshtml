@@ -1,6 +1,19 @@
+@model IReadOnlyList<Octokit.Issue>
 <html>
     <body>
-        <img src="images/ASP-NET-Banners-01.png" />
-        @("Hello World")
+        <h1>Roslyn IDE Bug priority</h1>
+        <table>
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <td>
+                        @i.Number
+                    </td>
+                    <td>
+                        @i.Title
+                    </td>
+                </tr>
+            }
+        </table>
     </body>
 </html>
