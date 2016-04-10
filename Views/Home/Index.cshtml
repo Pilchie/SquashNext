@@ -5,7 +5,14 @@
 <html>
     <body>
         <h1>Roslyn IDE Bug priority</h1>
-        <table>
+        <table class="table table-striped table-bordered sorted_table">
+            <thead>
+                <tr>
+                    <th>Issue</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody>
             @foreach (var i in Model)
             {
                 <tr>
@@ -17,6 +24,7 @@
                     </td>
                 </tr>
             }
+            </tbody>
         </table>
     </body>
 </html>
