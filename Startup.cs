@@ -35,11 +35,11 @@ namespace HelloMvc
         {
             services.AddMvc();
 
-            services.AddSingleton<GitHubClient, GitHubClient>(_ =>
-                new GitHubClient(new ProductHeaderValue("SquashNext"))
+            services.AddSingleton<ApiConnection, ApiConnection>(_ =>
+                new ApiConnection(new Connection(new ProductHeaderValue("SquashNext"))
                 {
                     Credentials = new Credentials(Configuration["Octokit:AuthToken"]),
-                });
+                }));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

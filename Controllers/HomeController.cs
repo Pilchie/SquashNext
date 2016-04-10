@@ -6,11 +6,11 @@ namespace HelloMvc
 {
     public class HomeController : Controller
     {
-        private readonly GitHubClient _client;
+        private readonly ApiConnection _apiConnection;
 
-        public HomeController(GitHubClient client)
+        public HomeController(ApiConnection apiConnection)
         {
-            _client = client;
+            _apiConnection = apiConnection;
         }
 
         public async Task<IActionResult> Index()
@@ -18,8 +18,9 @@ namespace HelloMvc
             var request = new RepositoryIssueRequest();
             request.Labels.Add("Area-IDE");
             request.State = ItemState.Open;
-            var issues = await _client.Issue.GetAllForRepository("dotnet", "roslyn", request);
-
+            var parameters = request.ToParametersDictionary();
+            parameters["per_page"] = "1000";
+            var issues = await _apiConnection.GetAll<Issue>(ApiUrls.Issues("dotnet", "roslyn"), parameters);
             return View(issues);
         }
 
