@@ -1,4 +1,7 @@
 @model IReadOnlyList<Octokit.Issue>
+@{
+    ViewData["Title"] = "All Issues";
+}
 <html>
     <body>
         <h1>Roslyn IDE Bug priority</h1>
@@ -7,7 +10,7 @@
             {
                 <tr>
                     <td>
-                        @i.Number
+                        <a href="@i.HtmlUrl" target="top">@i.Number</a>
                     </td>
                     <td>
                         @i.Title
