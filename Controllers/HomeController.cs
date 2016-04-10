@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Octokit;
@@ -15,9 +16,14 @@ namespace HelloMvc
 
         public async Task<IActionResult> Index()
         {
-            var request = new RepositoryIssueRequest();
+            var request = new RepositoryIssueRequest
+            {
+                State = ItemState.Open,
+                SortDirection = SortDirection.Ascending,
+                SortProperty = IssueSort.Created,
+            };
             request.Labels.Add("Area-IDE");
-            request.State = ItemState.Open;
+
             var parameters = request.ToParametersDictionary();
             parameters["per_page"] = "1000";
             var issues = await _apiConnection.GetAll<Issue>(ApiUrls.Issues("dotnet", "roslyn"), parameters);
