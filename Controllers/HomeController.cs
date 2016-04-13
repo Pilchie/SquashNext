@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using HelloMvc.Data;
 using Microsoft.AspNetCore.Mvc;
 using Octokit;
 
@@ -8,10 +9,12 @@ namespace HelloMvc
     public class HomeController : Controller
     {
         private readonly ApiConnection _apiConnection;
+        private readonly ApplicationDbContext _dbContext;
 
-        public HomeController(ApiConnection apiConnection)
+        public HomeController(ApiConnection apiConnection, ApplicationDbContext dbContext)
         {
             _apiConnection = apiConnection;
+            _dbContext = dbContext;
         }
 
         public async Task<IActionResult> Index()
