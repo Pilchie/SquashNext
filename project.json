@@ -31,34 +31,36 @@
     },
 
     "frameworks": {
-//        "netcoreapp1.0": {
-//            "imports": [
-//                "dnxcore50",
-//                "dotnet5.4",
-//                "netcore45",
-//                "portable-net452+win81"
-//            ]
-//        }
-        "netstandard1.5": {
+        "netcoreapp1.0": {
             "imports": [
                 "dnxcore50",
                 "portable-net452+win81"
             ]
         }
-},
-
+    },
 
     "tools": {
-        "dotnet-aspnet-codegenerator": "1.0.0-*",
+        "dotnet-aspnet-codegenerator": {
+            "version": "1.0.0-*",
+            "imports": [
+                "dnxcore50",
+                "portable-net452+win81"
+            ]
+        },
         "dotnet-ef": {
             "version": "1.0.0-*",
             "imports": [
                 "dnxcore50",
-                 "portable-net452+win81"
-             ]
+                "portable-net452+win81"
+            ]
         },
-        "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-*",
-        "dotnet-razor-tooling": "1.0.0-*"
+        "dotnet-razor-tooling": {
+            "version": "1.0.0-*",
+            "imports": [
+                "dnxcore50",
+                "portable-net452+win81"
+            ]
+        }
     },
 
     "content": [
