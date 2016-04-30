@@ -61,13 +61,19 @@ namespace HelloMvc
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            using (var context = new ApplicationDbContext(
+                        app.ApplicationServices.GetRequiredService<DbContextOptions<ApplicationDbContext>>()))
+            {
+                context.Database.Migrate();
+            }
+
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
             {
-            routes.MapRoute(
-                name: "default",
-                template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
