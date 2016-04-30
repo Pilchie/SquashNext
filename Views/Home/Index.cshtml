@@ -1,15 +1,22 @@
-@model IReadOnlyList<Octokit.Issue>
+@model IReadOnlyList<HelloMvc.Models.Issue>
 @{
     ViewData["Title"] = "All Issues";
 }
 <html>
     <body>
         <h1>Roslyn IDE Bug priority</h1>
+
+        <a asp-action="AddNew">Add new items</a>
+
         <table class="table table-striped table-bordered sorted_table">
             <thead>
                 <tr>
                     <th>Issue</th>
+                    <th>Release</th>
                     <th>Title</th>
+                    <th>Theme</th>
+                    <th>Priority</th>
+                    <th>Cost</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,12 +24,24 @@
             {
                 <tr>
                     <td>
-                        <a href="@i.HtmlUrl" target="top">@i.Number</a>
+                        <a href="@i.HtmlUrl" target="top">@i.GitHubIssueNumber</a>
+                    </td>
+                    <td>
+                        @i.Milestone?.ToString()
                     </td>
                     <td>
                         @i.Title
                     </td>
-                </tr>
+                    <td>
+                        @i.Theme?.ToString()
+                    </td>
+                     <td>
+                        @i.Priority?.ToString()
+                    </td>
+                    <td>
+                        @i.StoryPoints?.ToString()
+                    </td>
+                 </tr>
             }
             </tbody>
         </table>
