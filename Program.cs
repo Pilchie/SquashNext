@@ -11,7 +11,6 @@ namespace HelloMvc
             var host = new WebHostBuilder()
                         .UseKestrel()
                         .UseContentRoot(Directory.GetCurrentDirectory())
-                        .UseDefaultHostingConfiguration(args)
                         .UseEnvironment("Development")
                         .UseIISIntegration()
                         .UseStartup<Startup>()

@@ -28,8 +28,8 @@ namespace HelloMvc
                     source.Path = $"appsettings.{env.EnvironmentName}.json";
                     source.ReloadOnChange = true;
                     source.Optional = true;
-                })
-                .AddEnvironmentVariables();
+                });
+
             Configuration = builder.Build();
         }
 
