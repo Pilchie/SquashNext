@@ -27,19 +27,19 @@
                         <a href="@i.HtmlUrl" target="top">@i.GitHubIssueNumber</a>
                     </td>
                     <td>
-                        @i.Milestone.ToString()
+                        @i.Milestone?.ToString()
                     </td>
                     <td>
                         @i.Title
                     </td>
                     <td>
-                        @i.Theme.ToString()
+                        @i.Theme?.ToString()
                     </td>
                      <td>
-                        @i.Priority.ToString()
+                        @i.Priority?.ToString()
                     </td>
                     <td>
-                        @i.StoryPoints.ToString()
+                        @i.StoryPoints?.ToString()
                     </td>
                  </tr>
             }

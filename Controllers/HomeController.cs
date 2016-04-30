@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HelloMvc.Data;
@@ -37,8 +38,24 @@ namespace HelloMvc
 
             var parameters = request.ToParametersDictionary();
             parameters["per_page"] = "1000";
-            var issues = await _apiConnection.GetAll<Issue>(ApiUrls.Issues("dotnet", "roslyn"), parameters);
-            return View(issues);
+            var ghIssues = await _apiConnection.GetAll<Issue>(ApiUrls.Issues("dotnet", "roslyn"), parameters);
+            var localIssues = new HashSet<int>(_dbContext.Issues.Select(i => i.GitHubIssueNumber));
+
+            foreach (var i in ghIssues)
+            {
+                if (!localIssues.Contains(i.Number))
+                {
+                    _dbContext.Issues.Add(new Models.Issue
+                    {
+                        GitHubIssueNumber =i.Number,
+                        Title = i.Title,
+                        HtmlUrl = i.HtmlUrl.OriginalString,
+                    });
+                }
+            }
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult Error() => View();

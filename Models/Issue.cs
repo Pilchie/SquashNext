@@ -27,8 +27,8 @@ namespace HelloMvc.Models
         public int GitHubIssueNumber { get; set; }
         public string Title { get; set; }
         public string HtmlUrl { get; set; }
-        public Release Milestone { get; set; }
-        public Theme Theme { get; set; }
+        public Release? Milestone { get; set; }
+        public Theme? Theme { get; set; }
         public int? Priority { get; set; }
         public int? StoryPoints { get; set; }
     }
