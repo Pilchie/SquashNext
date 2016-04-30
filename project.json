@@ -16,27 +16,48 @@
         "Microsoft.Extensions.Logging": "1.0.0-*",
         "Microsoft.Extensions.Logging.Console": "1.0.0-*",
         "Microsoft.Extensions.Logging.Debug": "1.0.0-*",
-        "Microsoft.NETCore.App": {
-            "type": "platform",
-            "version": "1.0.0-rc2-24008"
-        },
         "Microsoft.Extensions.Configuration.FileProviderExtensions": "1.0.0-*",
         "Octokit": "0.19.0",
-        "Microsoft.Net.Http": "2.2.29"
+        "Microsoft.Net.Http": "2.2.29",
+        "Microsoft.EntityFrameworkCore.Sqlite": "1.0.0-*",
+        "Microsoft.EntityFrameworkCore.Sqlite.Design": { "version": "1.0.0-*", "type": "build" },
+        "Microsoft.EntityFrameworkCore.Tools": { "version": "1.0.0-*", "type": "build" }
     },
 
     "frameworks": {
         "netcoreapp1.0": {
             "imports": [
-                "netcore45",
-                "dotnet5.4"
-            ]
+                "dnxcore50",
+                "portable-net452+win81"
+            ],
+            "dependencies": {
+                "Microsoft.NETCore.App": {
+                    "type": "platform",
+                    "version": "1.0.0-rc2-24022"
+                }
+            }
         }
     },
 
     "tools": {
-        "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-*",
-        "dotnet-razor-tooling": "1.0.0-*"
+        "dotnet-aspnet-codegenerator": {
+            "version": "1.0.0-*",
+            "imports": [
+                "dnxcore50",
+                "portable-net452+win81"
+            ]
+        },
+        "Microsoft.EntityFrameworkCore.Tools":{
+            "version": "1.0.0-*",
+            "imports": "portable-net452+win81"
+        },
+        "dotnet-razor-tooling": {
+            "version": "1.0.0-*",
+            "imports": [
+                "dnxcore50",
+                "portable-net452+win81"
+            ]
+        }
     },
 
     "content": [
