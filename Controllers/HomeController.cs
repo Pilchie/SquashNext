@@ -17,7 +17,15 @@ namespace HelloMvc
             _dbContext = dbContext;
         }
 
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public IActionResult Index()
+        {
+            var issues = _dbContext.Issues.OrderBy(i => i.Milestone).ThenBy(i => i.Priority).ToList();
+            return View(issues);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddNew()
         {
             var request = new RepositoryIssueRequest
             {
